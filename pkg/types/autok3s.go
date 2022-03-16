@@ -39,6 +39,7 @@ type Metadata struct {
 	InstallScript   string      `json:"k3s-install-script,omitempty" yaml:"k3s-install-script,omitempty"`
 	Mirror          string      `json:"k3s-install-mirror,omitempty" yaml:"k3s-install-mirror,omitempty"`
 	DockerMirror    string      `json:"dockerMirror,omitempty" yaml:"dockerMirror,omitempty"`
+	DockerArg       string      `json:"dockerArg,omitempty" yaml:"dockerArg,omitempty"`
 	DockerScript    string      `json:"dockerScript,omitempty" yaml:"dockerScript,omitempty"`
 	Network         string      `json:"network,omitempty" yaml:"network,omitempty"`
 	UI              bool        `json:"ui" yaml:"ui"` // Deprecated

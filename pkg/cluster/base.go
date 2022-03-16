@@ -57,6 +57,12 @@ type providerProcess struct {
 
 // NewBaseProvider new base provider.
 func NewBaseProvider() *ProviderBase {
+	rawDockerInstallScript, found := os.LookupEnv("AUTOK3S_DOCKER_INSTALL_SCRIPT")
+	if !found {
+		rawDockerInstallScript = dockerInstallScript
+	}
+	rawDockerArg := os.Getenv("AUTOK3S_DOCKER_ARG")
+
 	return &ProviderBase{
 		Metadata: types.Metadata{
 			UI:            ui,
@@ -67,7 +73,8 @@ func NewBaseProvider() *ProviderBase {
 			Master:        master,
 			Worker:        worker,
 			ClusterCidr:   defaultCidr,
-			DockerScript:  dockerInstallScript,
+			DockerScript:  rawDockerInstallScript,
+			DockerArg:     rawDockerArg,
 		},
 		Status: types.Status{
 			MasterNodes: make([]types.Node, 0),
